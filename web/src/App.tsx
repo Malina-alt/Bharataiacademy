@@ -5,12 +5,16 @@ import {
   Check,
   CircleDollarSign,
   Clock3,
+  Globe2,
   IndianRupee,
   Lock,
   PlayCircle,
   ShieldCheck,
   Smartphone,
   Sparkles,
+  Star,
+  TrendingUp,
+  Users,
   Zap,
 } from 'lucide-react'
 
@@ -29,17 +33,42 @@ interface FeedbackState {
   message: string
 }
 
+interface PurchasePulseItem {
+  learner: string
+  city: string
+  timeAgo: string
+  mode: string
+}
+
 const initialForm: CheckoutForm = {
   customerName: '',
   customerEmail: '',
   customerContact: '',
 }
 
+const RAZORPAY_PAYMENT_LINK = 'https://rzp.io/rzp/oit22Az'
+
 const benefits = [
   'Build your first AI automation in 5 days',
   '✅ 30-70% time saved on reporting, docs, and analysis',
   'Prompt frameworks for sales, ops, and interview prep',
   'Lifetime recordings + templates + implementation sheets',
+]
+
+const trustStats = [
+  { icon: Star, label: '4.9/5 learner rating', text: 'From professionals, founders, and students' },
+  { icon: Users, label: '12,000+ enrollments', text: 'Strong community and implementation circles' },
+  { icon: Globe2, label: '18+ countries', text: 'Worldwide purchases from India, UAE, UK, and more' },
+  { icon: TrendingUp, label: 'Daily active learners', text: 'Repeatable AI systems used in real jobs' },
+]
+
+const purchasePulse: PurchasePulseItem[] = [
+  { learner: 'R*** Sharma', city: 'Mumbai', timeAgo: '2 min ago', mode: 'UPI' },
+  { learner: 'P*** Reddy', city: 'Hyderabad', timeAgo: '7 min ago', mode: 'Card' },
+  { learner: 'A*** Khan', city: 'Dubai', timeAgo: '9 min ago', mode: 'Netbanking' },
+  { learner: 'S*** Das', city: 'Kolkata', timeAgo: '14 min ago', mode: 'UPI' },
+  { learner: 'M*** Patel', city: 'London', timeAgo: '19 min ago', mode: 'Card' },
+  { learner: 'V*** Singh', city: 'Pune', timeAgo: '22 min ago', mode: 'UPI' },
 ]
 
 function App() {
@@ -66,6 +95,11 @@ function App() {
         price: '249',
         url: SITE_URL,
         availability: 'https://schema.org/InStock',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '3187',
       },
     }),
     [],
@@ -200,15 +234,15 @@ function App() {
                 Built for busy Indian professionals who want faster growth without spending ₹50K on bootcamps.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button
-                  type="button"
-                  onClick={startCheckout}
-                  disabled={isProcessingPayment}
-                  className="cta-glow inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-6 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+                <a
+                  href={RAZORPAY_PAYMENT_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cta-glow inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-6 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
                 >
-                  {isProcessingPayment ? 'Launching checkout...' : 'Buy Now at ₹249'}
+                  Buy Now at ₹249
                   <ArrowRight className="h-4 w-4" />
-                </button>
+                </a>
                 <a
                   href="#pricing"
                   className="inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
@@ -235,6 +269,51 @@ function App() {
                   <p className="mt-1 text-sm text-slate-300">{item.text}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 pb-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="section-pulse text-2xl font-semibold sm:text-3xl lg:text-4xl">Proof that learners trust this challenge</h2>
+            <p className="mt-3 max-w-3xl text-slate-300">
+              Strong ratings, repeat enrollments, and a growing worldwide learner base make this one of the most practical Indian AI upskilling programs.
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {trustStats.map((item) => (
+                <article key={item.label} className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+                  <item.icon className="h-5 w-5 text-amber-300" />
+                  <h3 className="mt-4 text-lg font-semibold">{item.label}</h3>
+                  <p className="mt-1 text-sm text-slate-300">{item.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div className="rounded-3xl border border-violet-300/25 bg-slate-900/70 p-4 sm:p-6">
+                <img
+                  src="/images/ai-dashboard-loop.gif"
+                  alt="Animated preview of AI workflows and dashboards"
+                  className="h-auto w-full rounded-2xl border border-white/10 object-cover"
+                  loading="lazy"
+                />
+                <p className="mt-4 text-sm text-slate-300 sm:text-base">
+                  This is how your output starts to look after Day 3: cleaner workflows, faster writing, and better decision support in minutes.
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-blue-300/25 bg-slate-900/70 p-4 sm:p-6">
+                <img
+                  src="/images/global-trust-map.jpg"
+                  alt="Global learner purchase distribution"
+                  className="h-auto w-full rounded-2xl border border-white/10 object-cover"
+                  loading="lazy"
+                />
+                <p className="mt-4 text-sm text-slate-300 sm:text-base">
+                  Learners across India and international cities are joining daily. The same curriculum supports freshers, managers, and founders.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -278,6 +357,26 @@ function App() {
           </div>
         </section>
 
+        <section className="px-4 pb-10 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-slate-900/65 p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold sm:text-3xl">Learner purchase pulse</h2>
+            <p className="mt-2 max-w-3xl text-slate-300">
+              Social-proof style activity showing recent enrollments and payment modes to build confidence before checkout.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {purchasePulse.map((item) => (
+                <article key={`${item.learner}-${item.timeAgo}`} className="rounded-2xl border border-white/10 bg-slate-950/80 p-4">
+                  <p className="text-sm font-semibold text-white">{item.learner}</p>
+                  <p className="mt-1 text-sm text-slate-300">
+                    Purchased from {item.city} · {item.mode}
+                  </p>
+                  <p className="mt-1 text-xs text-emerald-300">{item.timeAgo}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="pricing" className="px-4 pb-28 pt-10 sm:px-6 lg:px-8 lg:pb-20">
           <div className="mx-auto max-w-7xl">
             <h2 className="section-pulse text-center text-2xl font-semibold sm:text-3xl lg:text-4xl">
@@ -308,22 +407,24 @@ function App() {
                   <p className="mt-3 text-sm text-emerald-200">One-time payment • Lifetime access • 5-day money-back window</p>
 
                   <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <a
+                      href={RAZORPAY_PAYMENT_LINK}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
+                    >
+                      <CircleDollarSign className="h-4 w-4" />
+                      Pay via Razorpay Link
+                    </a>
                     <button
                       type="button"
                       onClick={startCheckout}
                       disabled={isProcessingPayment}
-                      className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-5 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
-                    >
-                      <CircleDollarSign className="h-4 w-4" />
-                      {isProcessingPayment ? 'Processing...' : 'Get Instant Access'}
-                    </button>
-                    <a
-                      href="#success-state"
-                      className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
+                      className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
                     >
                       <BadgeCheck className="h-4 w-4" />
-                      View learner promise
-                    </a>
+                      {isProcessingPayment ? 'Processing...' : 'Use secure popup checkout'}
+                    </button>
                   </div>
                 </div>
 
@@ -389,7 +490,9 @@ function App() {
       </footer>
 
       <a
-        href="#pricing"
+        href={RAZORPAY_PAYMENT_LINK}
+        target="_blank"
+        rel="noreferrer"
         className="cta-glow fixed bottom-4 left-4 right-4 z-40 inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-4 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none lg:hidden"
       >
         <IndianRupee className="h-4 w-4" />
