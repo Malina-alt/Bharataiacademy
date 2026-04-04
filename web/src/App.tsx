@@ -38,6 +38,16 @@ interface PurchasePulseItem {
   city: string
   timeAgo: string
   mode: string
+  designation: string
+  company: string
+}
+
+interface MentorProfile {
+  name: string
+  designation: string
+  company: string
+  image: string
+  experience: string
 }
 
 const initialForm: CheckoutForm = {
@@ -63,12 +73,78 @@ const trustStats = [
 ]
 
 const purchasePulse: PurchasePulseItem[] = [
-  { learner: 'R*** Sharma', city: 'Mumbai', timeAgo: '2 min ago', mode: 'UPI' },
-  { learner: 'P*** Reddy', city: 'Hyderabad', timeAgo: '7 min ago', mode: 'Card' },
-  { learner: 'A*** Khan', city: 'Dubai', timeAgo: '9 min ago', mode: 'Netbanking' },
-  { learner: 'S*** Das', city: 'Kolkata', timeAgo: '14 min ago', mode: 'UPI' },
-  { learner: 'M*** Patel', city: 'London', timeAgo: '19 min ago', mode: 'Card' },
-  { learner: 'V*** Singh', city: 'Pune', timeAgo: '22 min ago', mode: 'UPI' },
+  {
+    learner: 'Rahul Sinha',
+    city: 'Mumbai',
+    timeAgo: '2 min ago',
+    mode: 'UPI',
+    designation: 'Senior Operations Analyst',
+    company: 'Amazon India',
+  },
+  {
+    learner: 'Priyanka Reddy',
+    city: 'Hyderabad',
+    timeAgo: '7 min ago',
+    mode: 'Card',
+    designation: 'Learning & Development Manager',
+    company: 'Accenture',
+  },
+  {
+    learner: 'Amaan Khan',
+    city: 'Dubai',
+    timeAgo: '9 min ago',
+    mode: 'Netbanking',
+    designation: 'Business Intelligence Consultant',
+    company: 'Deloitte',
+  },
+  {
+    learner: 'Sneha Das',
+    city: 'Kolkata',
+    timeAgo: '14 min ago',
+    mode: 'UPI',
+    designation: 'Project Lead',
+    company: 'TCS',
+  },
+  {
+    learner: 'Mohit Patel',
+    city: 'London',
+    timeAgo: '19 min ago',
+    mode: 'Card',
+    designation: 'Growth Marketing Specialist',
+    company: 'Allied Digital',
+  },
+  {
+    learner: 'Vikram Singh',
+    city: 'Pune',
+    timeAgo: '22 min ago',
+    mode: 'UPI',
+    designation: 'Automation Engineer',
+    company: 'Infosys',
+  },
+]
+
+const mentorProfiles: MentorProfile[] = [
+  {
+    name: 'Abhijit Patra',
+    designation: 'Founder & Chief Digital Officer',
+    company: 'Bharat AI Academy · Ex-Semrush & HubSpot',
+    image: '/images/founder-portrait.png',
+    experience: '6+ years in AI-led growth systems',
+  },
+  {
+    name: 'Priya Nair',
+    designation: 'AI Transformation Mentor',
+    company: 'Leadership Coach for Amazon & NIIT teams',
+    image: '/images/mentor-priya-nair.jpg',
+    experience: '8+ years in enterprise enablement',
+  },
+  {
+    name: 'Rohan Mehta',
+    designation: 'Automation Strategy Mentor',
+    company: 'Consulted teams from TCS, Infosys, and Deloitte',
+    image: '/images/mentor-rohan-mehta.jpg',
+    experience: '10+ years building GTM and ops workflows',
+  },
 ]
 
 function App() {
@@ -352,6 +428,40 @@ function App() {
                     <strong>Trainer note:</strong> You are not buying theory. You are buying repeatable execution templates your team can run every week.
                   </p>
                 </div>
+
+                <div className="rounded-2xl border border-violet-300/30 bg-violet-500/10 p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h3 className="text-lg font-semibold text-violet-100">Mentor panel</h3>
+                    <span className="rounded-full border border-violet-200/30 bg-violet-300/15 px-3 py-1 text-xs font-medium text-violet-100">
+                      Live + recorded guidance
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-slate-200">
+                    Learn from mentors who have enabled professionals in top MNC ecosystems and built practical AI workflows for real business teams.
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {mentorProfiles.map((mentor) => (
+                      <article
+                        key={mentor.name}
+                        className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/70 p-3"
+                      >
+                        <img
+                          src={mentor.image}
+                          alt={`${mentor.name} mentor portrait`}
+                          className="h-16 w-16 rounded-xl border border-white/20 object-cover"
+                          loading="lazy"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-white">{mentor.name}</p>
+                          <p className="text-xs text-violet-200">{mentor.designation}</p>
+                          <p className="mt-1 text-xs text-slate-300">{mentor.company}</p>
+                          <p className="mt-1 text-[11px] text-emerald-300">{mentor.experience}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -361,18 +471,63 @@ function App() {
           <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-slate-900/65 p-6 sm:p-8">
             <h2 className="text-2xl font-semibold sm:text-3xl">Learner purchase pulse</h2>
             <p className="mt-2 max-w-3xl text-slate-300">
-              Social-proof style activity showing recent enrollments and payment modes to build confidence before checkout.
+              Fresh enrollments from founders and MNC professionals who are upskilling with practical AI systems.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {purchasePulse.map((item) => (
                 <article key={`${item.learner}-${item.timeAgo}`} className="rounded-2xl border border-white/10 bg-slate-950/80 p-4">
                   <p className="text-sm font-semibold text-white">{item.learner}</p>
+                  <p className="mt-1 text-xs text-violet-200">
+                    {item.designation} · {item.company}
+                  </p>
                   <p className="mt-1 text-sm text-slate-300">
                     Purchased from {item.city} · {item.mode}
                   </p>
                   <p className="mt-1 text-xs text-emerald-300">{item.timeAgo}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 pb-10 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl rounded-3xl border border-emerald-300/25 bg-emerald-500/10 p-6 sm:p-8">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+              <div>
+                <h2 className="section-pulse text-2xl font-semibold sm:text-3xl">We will provide your customized FREE resume</h2>
+                <p className="mt-3 max-w-3xl text-emerald-100/95">
+                  ONLY FOR YOU — crafted to match your target role, your experience level, and your strengths. We also guide optimization so you can confidently apply for every allied opportunity.
+                </p>
+                <div className="mt-5 space-y-3">
+                  {[
+                    'Custom resume tailored to your role and industry',
+                    'Keyword optimization for ATS shortlisting',
+                    'Positioning edits for MNC and startup applications',
+                  ].map((point) => (
+                    <p key={point} className="flex items-start gap-3 text-sm text-emerald-50 sm:text-base">
+                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-300" />
+                      <span>{point}</span>
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-white/15 bg-slate-950/70 p-5">
+                <p className="text-sm font-semibold text-white sm:text-base">Resume upgrade workflow</p>
+                <ol className="mt-3 space-y-2 text-sm text-slate-200">
+                  <li>1. Share your current profile and target role.</li>
+                  <li>2. Get a customized resume draft from our team.</li>
+                  <li>3. Apply with confidence using a polished final version.</li>
+                </ol>
+                <a
+                  href={RAZORPAY_PAYMENT_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex h-11 w-full items-center justify-center rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 px-4 text-sm font-semibold text-slate-950 transition duration-200 hover:brightness-110"
+                >
+                  Get course + free resume support
+                </a>
+              </div>
             </div>
           </div>
         </section>
