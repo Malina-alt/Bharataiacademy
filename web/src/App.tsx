@@ -57,6 +57,8 @@ const initialForm: CheckoutForm = {
 }
 
 const RAZORPAY_PAYMENT_LINK = 'https://rzp.io/rzp/oit22Az'
+const GOOGLE_FORM_LINK = 'https://forms.gle/bbRLRtKbMQAEtnQu6'
+const YOUTUBE_EMBED_LINK = 'https://www.youtube.com/embed/tZuBV6LT0Mg'
 
 const benefits = [
   'Build your first AI automation in 5 days',
@@ -126,10 +128,10 @@ const purchasePulse: PurchasePulseItem[] = [
 const mentorProfiles: MentorProfile[] = [
   {
     name: 'Abhijit Patra',
-    designation: 'Founder & Chief Digital Officer',
-    company: 'Bharat AI Academy · Ex-Semrush & HubSpot',
-    image: '/images/founder-portrait.png',
-    experience: '6+ years in AI-led growth systems',
+    designation: 'Founder | 6+ Years Experience | C.D.O',
+    company: 'Amazon & NIIT Certified Expert · Bharat AI Academy',
+    image: '/images/mentor-linkedin-profile.png',
+    experience: 'Built scalable digital assets and growth systems for 2,500+ individuals',
   },
   {
     name: 'Priya Nair',
@@ -389,6 +391,17 @@ function App() {
                 <p className="mt-4 text-sm text-slate-300 sm:text-base">
                   Learners across India and international cities are joining daily. The same curriculum supports freshers, managers, and founders.
                 </p>
+                <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60">
+                  <iframe
+                    src={YOUTUBE_EMBED_LINK}
+                    title="Bharat AI Academy learner outcomes video"
+                    className="aspect-video w-full"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -520,12 +533,12 @@ function App() {
                   <li>3. Apply with confidence using a polished final version.</li>
                 </ol>
                 <a
-                  href={RAZORPAY_PAYMENT_LINK}
+                  href={GOOGLE_FORM_LINK}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex h-11 w-full items-center justify-center rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 px-4 text-sm font-semibold text-slate-950 transition duration-200 hover:brightness-110"
                 >
-                  Get course + free resume support
+                  Fill Google Form for free resume support
                 </a>
               </div>
             </div>
@@ -571,15 +584,25 @@ function App() {
                       <CircleDollarSign className="h-4 w-4" />
                       Pay via Razorpay Link
                     </a>
-                    <button
-                      type="button"
-                      onClick={startCheckout}
-                      disabled={isProcessingPayment}
-                      className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
-                    >
-                      <BadgeCheck className="h-4 w-4" />
-                      {isProcessingPayment ? 'Processing...' : 'Use secure popup checkout'}
-                    </button>
+                    <div className="space-y-2">
+                      <button
+                        type="button"
+                        onClick={startCheckout}
+                        disabled={isProcessingPayment}
+                        className="inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+                      >
+                        <BadgeCheck className="h-4 w-4" />
+                        {isProcessingPayment ? 'Processing...' : 'Use secure popup checkout'}
+                      </button>
+                      <a
+                        href={RAZORPAY_PAYMENT_LINK}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex h-10 w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 text-xs font-medium text-slate-200 transition-colors duration-200 hover:bg-white/10"
+                      >
+                        Same Razorpay link available here
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -609,8 +632,16 @@ function App() {
               </p>
               <div className="rounded-xl border border-emerald-300/30 bg-emerald-500/10 p-3 text-sm text-emerald-100">
                 {isPurchaseComplete
-                  ? 'You are in! Check your inbox for onboarding details.'
-                  : 'Complete checkout now to unlock all modules instantly.'}
+                  ? 'You are in! Check your inbox for onboarding details and complete your free resume support form.'
+                  : 'Complete checkout now to unlock all modules instantly & free resume support.'}
+                <a
+                  href={GOOGLE_FORM_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex h-10 w-full items-center justify-center rounded-lg border border-emerald-200/30 bg-emerald-300/10 px-3 text-xs font-semibold text-emerald-50 transition-colors duration-200 hover:bg-emerald-300/20 sm:w-auto"
+                >
+                  Fill Google Form for Free Resume Support
+                </a>
               </div>
             </div>
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80">
