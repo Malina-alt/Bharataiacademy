@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
   ArrowRight,
   BadgeCheck,
@@ -16,6 +16,7 @@ import {
 
 import { ApiError, paymentsApi } from '@/lib/api'
 import { loadRazorpayScript, openRazorpayCheckout } from '@/lib/razorpay'
+import { SITE_URL } from '@/lib/site'
 
 interface CheckoutForm {
   customerName: string
@@ -46,6 +47,29 @@ function App() {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false)
   const [feedback, setFeedback] = useState<FeedbackState | null>(null)
   const [isPurchaseComplete, setIsPurchaseComplete] = useState(false)
+
+  const courseSchema = useMemo(
+    () => ({
+      '@context': 'https://schema.org',
+      '@type': 'Course',
+      name: '5-Day AI Mastery Challenge',
+      description:
+        'A practical AI upskilling challenge by Bharat AI Academy designed for students, founders, and professionals.',
+      provider: {
+        '@type': 'Organization',
+        name: 'Bharat AI Academy',
+        url: SITE_URL,
+      },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'INR',
+        price: '249',
+        url: SITE_URL,
+        availability: 'https://schema.org/InStock',
+      },
+    }),
+    [],
+  )
 
   const startCheckout = async () => {
     setFeedback(null)
@@ -133,6 +157,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
+      <script type="application/ld+json">{JSON.stringify(courseSchema)}</script>
+
       <div
         className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(124,58,237,0.4),transparent_38%),radial-gradient(circle_at_80%_10%,rgba(37,99,235,0.35),transparent_35%),radial-gradient(circle_at_50%_90%,rgba(16,185,129,0.24),transparent_40%)]"
         aria-hidden="true"
