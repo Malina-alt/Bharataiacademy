@@ -690,6 +690,12 @@ function App() {
                 {isPurchaseComplete
                   ? 'You are in! Check your inbox for onboarding details and complete your free resume support form.'
                   : 'Complete checkout now to unlock all modules instantly & free resume support.'}
+                <img
+                  src="/images/checkout-proof-screenshot.png"
+                  alt="Checkout support proof screenshot"
+                  loading="lazy"
+                  className="mt-3 w-full max-w-full rounded-lg border border-emerald-200/25 object-cover"
+                />
                 <a
                   href={GOOGLE_FORM_LINK}
                   target="_blank"
