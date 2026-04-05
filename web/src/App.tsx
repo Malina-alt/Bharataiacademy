@@ -486,7 +486,7 @@ function App() {
               <span className="inline-flex items-center rounded-full border border-emerald-300/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-200 uppercase">
                 Get Certificate of Course
               </span>
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+              <h2 className="text-scroll-shine text-2xl font-semibold sm:text-3xl lg:text-4xl">
                 Complete the program and receive your official training certificate + free ATS resume support from us.
               </h2>
               <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -538,7 +538,7 @@ function App() {
 
         <section className="px-4 pb-10 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-slate-900/65 p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold sm:text-3xl">Learner purchase pulse</h2>
+            <h2 className="text-scroll-shine text-2xl font-semibold sm:text-3xl">Learner purchase pulse</h2>
             <p className="mt-2 max-w-3xl text-slate-300">
               Fresh enrollments from founders and MNC professionals who are upskilling with practical AI systems.
             </p>
@@ -682,7 +682,7 @@ function App() {
         <section className="px-4 pb-14 sm:px-6 lg:px-8" id="success-state">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 rounded-3xl border border-white/10 bg-slate-900/65 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-3">
-              <h3 className="text-2xl font-semibold sm:text-3xl">Meet your mentor</h3>
+              <h3 className="text-scroll-shine text-2xl font-semibold sm:text-3xl">Meet your mentor</h3>
               <p className="text-slate-300">
                 The sessions are hands-on and India-contextual. From job interview prep to business automation, every workshop is designed for immediate implementation.
               </p>
