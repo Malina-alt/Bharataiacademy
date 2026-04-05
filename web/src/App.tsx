@@ -527,7 +527,7 @@ function App() {
             </div>
             <div className="overflow-hidden rounded-2xl border border-white/20 bg-slate-900/50 p-3 sm:p-4">
               <img
-                src="/images/course-certificate.jpg"
+                src="/images/updated-certificate-photo.jpg"
                 alt="Bharat AI Academy certificate sample"
                 className="h-auto w-full rounded-xl object-cover"
                 loading="lazy"
