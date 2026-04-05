@@ -5,7 +5,12 @@ import type {
   VerifyPaymentResponse,
 } from '@/types/payments'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const rawApiBaseUrl = import.meta.env.VITE_API_URL?.trim()
+const API_BASE_URL = (rawApiBaseUrl || 'http://localhost:8000').replace(/\/+$/, '')
+
+if (!rawApiBaseUrl && import.meta.env.PROD) {
+  console.warn('VITE_API_URL is not set. Falling back to localhost backend URL.')
+}
 
 class ApiError extends Error {
   statusCode: number
@@ -30,9 +35,16 @@ async function apiFetch<T>(endpoint: string, options?: RequestInit): Promise<T> 
     let errorMessage = 'Something went wrong. Please try again.'
 
     try {
-      const errorData = (await response.json()) as { detail?: string }
-      if (errorData?.detail) {
-        errorMessage = errorData.detail
+      const responseText = await response.text()
+
+      if (responseText.includes('DEPLOYMENT_NOT_FOUND')) {
+        errorMessage =
+          'Service is temporarily unavailable due to an outdated deployment link. Please try again in a moment.'
+      } else if (responseText) {
+        const errorData = JSON.parse(responseText) as { detail?: string }
+        if (errorData?.detail) {
+          errorMessage = errorData.detail
+        }
       }
     } catch {
       // Ignore parsing failures and keep generic message.
