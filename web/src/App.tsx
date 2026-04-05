@@ -130,7 +130,7 @@ const mentorProfiles: MentorProfile[] = [
     name: 'Abhijit Patra',
     designation: 'Founder | 6+ Years Experience | C.D.O',
     company: 'Amazon & NIIT Certified Expert · Bharat AI Academy',
-    image: '/images/mentor-linkedin-profile.png',
+    image: '/images/mentor-new-photo.png',
     experience: 'Built scalable digital assets and growth systems for 2,500+ individuals',
   },
   {
@@ -480,6 +480,62 @@ function App() {
           </div>
         </section>
 
+        <section className="px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 rounded-3xl border border-indigo-400/30 bg-gradient-to-br from-indigo-950/60 via-slate-900/80 to-slate-950/90 p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
+            <div className="space-y-4">
+              <span className="inline-flex items-center rounded-full border border-emerald-300/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-200 uppercase">
+                Get Certificate of Course
+              </span>
+              <h2 className="text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+                Complete the program and receive your official training certificate + free ATS resume support from us.
+              </h2>
+              <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                After successful completion, you will receive a Bharat AI Academy certificate and a personalized ATS-friendly resume form support package to help you apply confidently for roles in AI, analytics, and automation.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-200 sm:text-base">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-300" aria-hidden="true" />
+                  Certificate of training issued after course completion
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-300" aria-hidden="true" />
+                  Free ATS resume guidance and profile-focused improvements
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-300" aria-hidden="true" />
+                  Fast support via Google Form for resume submission and review
+                </li>
+              </ul>
+              <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
+                <a
+                  href={GOOGLE_FORM_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 w-full cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/20"
+                >
+                  Get Free ATS Resume Form
+                </a>
+                <a
+                  href={RAZORPAY_PAYMENT_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 w-full cursor-pointer items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-4 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400"
+                >
+                  Enroll &amp; Secure Checkout
+                </a>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-white/20 bg-slate-900/50 p-3 sm:p-4">
+              <img
+                src="/images/course-certificate.jpg"
+                alt="Bharat AI Academy certificate sample"
+                className="h-auto w-full rounded-xl object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+
         <section className="px-4 pb-10 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-slate-900/65 p-6 sm:p-8">
             <h2 className="text-2xl font-semibold sm:text-3xl">Learner purchase pulse</h2>
@@ -598,9 +654,9 @@ function App() {
                         href={RAZORPAY_PAYMENT_LINK}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex h-10 w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 text-xs font-medium text-slate-200 transition-colors duration-200 hover:bg-white/10"
+                        className="inline-flex h-10 w-full items-center justify-center rounded-full border border-violet-300/40 bg-violet-500/10 px-4 text-xs font-semibold text-violet-100 transition-colors duration-200 hover:bg-violet-500/20"
                       >
-                        Same Razorpay link available here
+                        Open direct Razorpay payment link
                       </a>
                     </div>
                   </div>
@@ -646,7 +702,7 @@ function App() {
             </div>
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80">
               <img
-                src="/images/founder-portrait.png"
+                src="/images/mentor-new-photo.png"
                 alt="Bharat AI Academy mentor portrait"
                 className="h-full w-full object-cover object-top"
               />
