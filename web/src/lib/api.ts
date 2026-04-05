@@ -5,12 +5,22 @@ import type {
   VerifyPaymentResponse,
 } from '@/types/payments'
 
-const rawApiBaseUrl = import.meta.env.VITE_API_URL?.trim()
-const API_BASE_URL = (rawApiBaseUrl || 'http://localhost:8000').replace(/\/+$/, '')
+const resolveApiBaseUrl = (): string => {
+  const rawApiBaseUrl = import.meta.env.VITE_API_URL?.trim()
 
-if (!rawApiBaseUrl && import.meta.env.PROD) {
-  console.warn('VITE_API_URL is not set. Falling back to localhost backend URL.')
+  if (rawApiBaseUrl) {
+    return rawApiBaseUrl.replace(/\/+$/, '')
+  }
+
+  if (import.meta.env.PROD) {
+    throw new Error('Missing VITE_API_URL in production. Configure a valid backend URL in Vercel environment variables.')
+  }
+
+  console.warn('VITE_API_URL is not set. Falling back to localhost backend URL for development.')
+  return 'http://localhost:8000'
 }
+
+const API_BASE_URL = resolveApiBaseUrl()
 
 class ApiError extends Error {
   statusCode: number
@@ -33,17 +43,31 @@ async function apiFetch<T>(endpoint: string, options?: RequestInit): Promise<T> 
 
   if (!response.ok) {
     let errorMessage = 'Something went wrong. Please try again.'
+    const vercelErrorHeader = response.headers.get('x-vercel-error')?.toUpperCase()
 
     try {
       const responseText = await response.text()
+      const isDeploymentNotFound =
+        vercelErrorHeader === 'DEPLOYMENT_NOT_FOUND' || responseText.toUpperCase().includes('DEPLOYMENT_NOT_FOUND')
 
-      if (responseText.includes('DEPLOYMENT_NOT_FOUND')) {
+      if (isDeploymentNotFound) {
+        console.error('[API] DEPLOYMENT_NOT_FOUND received from backend URL.', {
+          endpoint,
+          status: response.status,
+          apiBaseUrl: API_BASE_URL,
+          vercelErrorHeader,
+        })
+
         errorMessage =
-          'Service is temporarily unavailable due to an outdated deployment link. Please try again in a moment.'
+          'Service is temporarily unavailable because the backend deployment is no longer active. Please try again shortly.'
       } else if (responseText) {
-        const errorData = JSON.parse(responseText) as { detail?: string }
-        if (errorData?.detail) {
-          errorMessage = errorData.detail
+        try {
+          const errorData = JSON.parse(responseText) as { detail?: string }
+          if (errorData?.detail) {
+            errorMessage = errorData.detail
+          }
+        } catch {
+          // Response was not JSON; keep the generic message.
         }
       }
     } catch {
