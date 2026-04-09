@@ -286,17 +286,14 @@ function App() {
 
       <main>
         <section className="relative isolate overflow-hidden px-4 pb-16 pt-20 sm:px-6 lg:px-8">
-          <video
-            className="absolute inset-0 -z-20 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            aria-label="Students using AI tools in a modern digital workspace"
-          >
-            <source src="https://cdn.coverr.co/videos/coverr-man-working-on-his-laptop-1579/1080p.mp4" type="video/mp4" />
-          </video>
-          <div className="pointer-events-none absolute inset-0 -z-10 bg-slate-950/60" aria-hidden="true" />
+          <img
+            src="/images/header-left-bg-photo.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+            loading="eager"
+          />
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-slate-950/70" aria-hidden="true" />
 
           <div className="mx-auto w-full max-w-7xl space-y-10 lg:space-y-14">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
