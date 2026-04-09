@@ -298,36 +298,57 @@ function App() {
           </video>
           <div className="pointer-events-none absolute inset-0 -z-10 bg-slate-950/60" aria-hidden="true" />
 
-          <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 lg:gap-14">
-            <div className="max-w-3xl space-y-6">
-              <p className="inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">
-                <Sparkles className="h-4 w-4" />
-                5-Day AI Mastery · Bharat AI Academy
-              </p>
-              <h1 className="section-pulse text-3xl font-semibold leading-tight sm:text-4xl lg:text-6xl">
-                AI Skills at an Affordable Cost, Results as Powerful as a Full Startup Team.
-              </h1>
-              <p className="max-w-2xl text-base text-slate-200 sm:text-lg">
-                Learn practical AI systems for Excel, content, prompts, automation, and interviews.
-                Built for busy Indian professionals who want faster growth without spending ₹50K on bootcamps.
-              </p>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href={RAZORPAY_PAYMENT_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="cta-glow inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-6 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
-                >
-                  Buy Now at ₹249
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="#pricing"
-                  className="inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
-                >
-                  <PlayCircle className="h-4 w-4" />
-                  See pricing breakdown
-                </a>
+          <div className="mx-auto w-full max-w-7xl space-y-10 lg:space-y-14">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+              <div className="relative order-2 lg:order-1">
+                <div
+                  className="pointer-events-none absolute -inset-5 -z-10 rounded-[2rem] bg-violet-500/30 blur-3xl"
+                  aria-hidden="true"
+                />
+                <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-slate-900/50 shadow-2xl">
+                  <img
+                    src="/images/header-left-bg-photo.png"
+                    alt="AI workspace interface in a modern studio"
+                    className="h-full min-h-[260px] w-full object-cover"
+                    loading="eager"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-slate-950/30 via-transparent to-violet-500/20"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              <div className="order-1 max-w-3xl space-y-6 lg:order-2">
+                <p className="inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">
+                  <Sparkles className="h-4 w-4" />
+                  5-Day AI Mastery · Bharat AI Academy
+                </p>
+                <h1 className="section-pulse text-3xl font-semibold leading-tight sm:text-4xl lg:text-6xl">
+                  AI Skills at an Affordable Cost, Results as Powerful as a Full Startup Team.
+                </h1>
+                <p className="max-w-2xl text-base text-slate-200 sm:text-lg">
+                  Learn practical AI systems for Excel, content, prompts, automation, and interviews.
+                  Built for busy Indian professionals who want faster growth without spending ₹50K on bootcamps.
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <a
+                    href={RAZORPAY_PAYMENT_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cta-glow inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 px-6 text-sm font-semibold text-white transition-all duration-200 hover:from-violet-500 hover:to-blue-400 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
+                  >
+                    Buy Now at ₹249
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                  <a
+                    href="#pricing"
+                    className="inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:outline-none"
+                  >
+                    <PlayCircle className="h-4 w-4" />
+                    See pricing breakdown
+                  </a>
+                </div>
               </div>
             </div>
 
