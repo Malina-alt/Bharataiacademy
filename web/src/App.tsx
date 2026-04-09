@@ -305,7 +305,7 @@ function App() {
                 5-Day AI Mastery · Bharat AI Academy
               </p>
               <h1 className="section-pulse text-3xl font-semibold leading-tight sm:text-4xl lg:text-6xl">
-                AI skills as cheap as a vada pav, but outcomes as powerful as a full startup team.
+                AI Skills at an Affordable Cost, Results as Powerful as a Full Startup Team.
               </h1>
               <p className="max-w-2xl text-base text-slate-200 sm:text-lg">
                 Learn practical AI systems for Excel, content, prompts, automation, and interviews.
@@ -604,7 +604,7 @@ function App() {
         <section id="pricing" className="px-4 pb-28 pt-10 sm:px-6 lg:px-8 lg:pb-20">
           <div className="mx-auto max-w-7xl">
             <h2 className="section-pulse text-center text-2xl font-semibold sm:text-3xl lg:text-4xl">
-              Flash pricing that feels like old-school vada pav value
+              Flash pricing with exceptional value
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-slate-300">
               One-time payment. Lifetime access. No hidden platform fee.
