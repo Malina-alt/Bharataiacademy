@@ -44,8 +44,8 @@ interface PurchasePulseItem {
 
 interface MentorProfile {
   name: string
-  designation: string
-  company: string
+  designation?: string
+  company?: string
   image: string
   experience: string
 }
@@ -135,15 +135,11 @@ const mentorProfiles: MentorProfile[] = [
   },
   {
     name: 'Priya Nair',
-    designation: 'AI Transformation Mentor',
-    company: 'Leadership Coach for Amazon & NIIT teams',
     image: '/images/mentor-priya-nair.jpg',
     experience: '8+ years in enterprise enablement',
   },
   {
     name: 'Rohan Mehta',
-    designation: 'Automation Strategy Mentor',
-    company: 'Consulted teams from TCS, Infosys, and Deloitte',
     image: '/images/mentor-rohan-mehta.jpg',
     experience: '10+ years building GTM and ops workflows',
   },
@@ -485,8 +481,8 @@ function App() {
                         />
                         <div className="min-w-0">
                           <p className="text-sm font-semibold text-white">{mentor.name}</p>
-                          <p className="text-xs text-violet-200">{mentor.designation}</p>
-                          <p className="mt-1 text-xs text-slate-300">{mentor.company}</p>
+                          {mentor.designation ? <p className="text-xs text-violet-200">{mentor.designation}</p> : null}
+                          {mentor.company ? <p className="mt-1 text-xs text-slate-300">{mentor.company}</p> : null}
                           <p className="mt-1 text-[11px] text-emerald-300">{mentor.experience}</p>
                         </div>
                       </article>
